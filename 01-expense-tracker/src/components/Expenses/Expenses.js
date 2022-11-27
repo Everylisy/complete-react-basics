@@ -1,7 +1,7 @@
 import React from 'react';
 
-import '../style/Expenses.css';
-import Card from './Card';
+import '../../style/Expenses.css';
+import Card from '../UI/Card';
 import ExpenseItem from './ExpenseItem';
 
 function Expenses({ items }) {
