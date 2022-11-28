@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import '../../style/Expenses.css';
 import Card from '../UI/Card';
-import ExpenseItem from './ExpenseItem';
 import ExpensesFilter from './ExpensesFilter';
+import ExpensesList from './ExpensesList';
 
 function Expenses({ items }) {
   const [inputYear, setInputYear] = useState('2022');
@@ -12,22 +12,9 @@ function Expenses({ items }) {
     setInputYear(year);
   };
 
-  const filteringItems = items.filter((expense) => {
+  const filteredItems = items.filter((expense) => {
     return expense.date.getFullYear().toString() === inputYear;
   });
-
-  let renderExpenses = <p>결과가 없습니다.</p>;
-
-  if (filteringItems.length > 0) {
-    renderExpenses = filteringItems.map((expense) => (
-      <ExpenseItem
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-        key={expense.id}
-      />
-    ));
-  }
 
   return (
     <>
@@ -36,7 +23,7 @@ function Expenses({ items }) {
           selectedYear={inputYear}
           onYearFilter={yearValueHandler}
         />
-        {renderExpenses}
+        <ExpensesList items={filteredItems} />
       </Card>
     </>
   );

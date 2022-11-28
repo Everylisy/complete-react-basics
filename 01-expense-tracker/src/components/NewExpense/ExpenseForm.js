@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import '../../style/ExpenseForm.css';
 
-function ExpenseForm({ onSaveExpenseData }) {
+function ExpenseForm({ onSaveExpenseData, onInActive }) {
   const [inputTitle, setInputTitle] = useState('');
   const [inputAmount, setInputAmount] = useState('');
   const [inputDate, setInputDate] = useState('');
@@ -33,6 +33,7 @@ function ExpenseForm({ onSaveExpenseData }) {
     setInputTitle('');
     setInputAmount('');
     setInputDate('');
+    onInActive();
   };
 
   return (
@@ -65,6 +66,9 @@ function ExpenseForm({ onSaveExpenseData }) {
       </div>
       <div className="new-expense__actions">
         <button type="submit">비용 추가</button>
+        <button type="button" onClick={onInActive}>
+          취소
+        </button>
       </div>
     </form>
   );
