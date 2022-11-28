@@ -12,6 +12,23 @@ function Expenses({ items }) {
     setInputYear(year);
   };
 
+  const filteringItems = items.filter((expense) => {
+    return expense.date.getFullYear().toString() === inputYear;
+  });
+
+  let renderExpenses = <p>결과가 없습니다.</p>;
+
+  if (filteringItems.length > 0) {
+    renderExpenses = filteringItems.map((expense) => (
+      <ExpenseItem
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+        key={expense.id}
+      />
+    ));
+  }
+
   return (
     <>
       <Card className="expenses">
@@ -19,14 +36,7 @@ function Expenses({ items }) {
           selectedYear={inputYear}
           onYearFilter={yearValueHandler}
         />
-        {items.map((expense) => (
-          <ExpenseItem
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-            key={expense.id}
-          />
-        ))}
+        {renderExpenses}
       </Card>
     </>
   );
