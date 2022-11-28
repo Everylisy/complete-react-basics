@@ -6,7 +6,7 @@ import ExpenseDate from './ExpenseDate';
 
 function ExpenseItem({ title, amount, date }) {
   return (
-    <>
+    <li>
       <Card className="expense-item">
         <ExpenseDate date={date} />
         <div className="expense-item__description">
@@ -14,7 +14,7 @@ function ExpenseItem({ title, amount, date }) {
           <div className="expense-item__price">{amount}</div>
         </div>
       </Card>
-    </>
+    </li>
   );
 }
 
