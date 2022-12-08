@@ -3,9 +3,9 @@ import React from 'react';
 import CardIcon from './CartIcon';
 import styles from './HeaderCartButton.module.css';
 
-const HeaderCartButton = () => {
+const HeaderCartButton = ({ onShowCart }) => {
   return (
-    <button className={styles.button}>
+    <button className={styles.button} onClick={onShowCart}>
       <span className={styles.icon}>
         <CardIcon />
       </span>
